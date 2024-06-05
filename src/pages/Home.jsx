@@ -41,7 +41,8 @@ export const Home = () => {
               <Post
                 id={obj._id}
                 title={obj.title}
-                imageUrl="https://vkusvill.ru/upload/resize/624924/624924_1200x600x70_c.webp"
+                imageUrl={obj.imageUrl}
+                // imageUrl="https://vkusvill.ru/upload/resize/624924/624924_1200x600x70_c.webp"
                 user={obj.user}
                 createdAt={obj.createdAt}
                 viewsCount={obj.viewsCount}

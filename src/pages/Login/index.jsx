@@ -4,28 +4,39 @@ import TextField from "@mui/material/TextField";
 import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
 import { useForm } from "react-hook-form";
+import { useDispatch, useSelector } from "react-redux";
+import { Navigate } from "react-router-dom";
+
+import { fetchAuth, selectIsAuth } from "../../redux/slices/auth";
 
 import styles from "./Login.module.scss";
 
 export const Login = () => {
+  const isAuth = useSelector(selectIsAuth);
+  const dispatch = useDispatch();
+
   const {
     register,
     handleSubmit,
     formState: { errors, isValid },
   } = useForm({
     defaultValues: {
-      email: "",
-      password: "",
+      email: "test@test.ru",
+      password: "123",
     },
     // mode: "all",
     mode: "onChange",
   });
 
   const onSubmit = (values) => {
-    console.log(values);
+    dispatch(fetchAuth(values));
   };
 
-  console.log(errors, isValid);
+  if (isAuth) {
+    return <Navigate to="/" />;
+  }
+
+  console.log("isAuth", isAuth);
 
   return (
     <Paper classes={{ root: styles.root }}>

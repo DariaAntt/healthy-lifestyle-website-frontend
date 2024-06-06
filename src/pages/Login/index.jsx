@@ -45,8 +45,6 @@ export const Login = () => {
     return <Navigate to="/" />;
   }
 
-  console.log("isAuth", isAuth);
-
   return (
     <Paper classes={{ root: styles.root }}>
       <Typography classes={{ root: styles.title }} variant="h5">
